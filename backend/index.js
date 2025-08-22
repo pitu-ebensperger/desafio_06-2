@@ -23,13 +23,13 @@ const canciones = readCanciones();
 });
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 app.get("/home", (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-// POST/canciones
+// POST/canciones 
 app.post("/canciones", (req, res) => {
 const cancion = req.body
 const canciones = readCanciones()
