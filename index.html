@@ -8,53 +8,64 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./frontend/src/index.css" />
 </head>
 
 <body>
 <body>
     <div id="root"></div>
-    <script type="module" src="/public/src/main.jsx"></script>
+    <script type="module" src="./frontend/src/main.jsx"></script>
   </body>
 </html>
+<div class="main">
   <div id="AgregarCancion">
-    <h2 class="pt-3">&#119070; Mi repertorio &#119070;</h2>
+    <h1 class="pt-3">Mi Repertorio</h1>
 
-    <div class="container pt-5 w-50">
+    <div class="container">
       <div>
         <div class="form-group row">
-          <label for="name" class="col-sm-2 col-form-label">Canción:</label>
-          <div class="col-sm-10">
+          <label for="name" class="col-sm-3 col-form-label">Canción:</label>
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="cancion" value="A dios le pido" />
           </div>
         </div>
         <div class="form-group row">
-          <label for="email" class="col-sm-2 col-form-label">Artista: </label>
-          <div class="col-sm-10">
+          <label for="email" class="col-sm-3 col-form-label">Artista: </label>
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="artista" value="Juanes" />
           </div>
         </div>
         <div class="form-group row">
-          <label for="rut" class="col-sm-2 col-form-label">Tono:</label>
-          <div class="col-sm-10">
+          <label for="rut" class="col-sm-3 col-form-label">Tono:</label>
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="tono" value="Em" />
           </div>
         </div>
-        <button onclick="nuevaCancion()" id="agregar" class="m-auto btn btn-success">
+        <div class="cont-buttons">
+        <button onclick="nuevaCancion()" id="agregar" class="btn btn-add m-auto">
           Agregar
         </button>
-        <button onclick="editarCancion()" id="editar" class="m-auto btn btn-info">
+        <button onclick="editarCancion()" id="editar" class="btn btn-edit m-auto">
           Editar
         </button>
+        </div>
       </div>
     </div>
   </div>
   <div id="ListaCanciones">
-    <hr />
-    <hr />
-    <h2>Tabla de canciones &#127908;</h2>
 
-    <div class="container pt-5 w-75">
-      <table class="table table-dark">
+    <h2>Tabla de Canciones</h2>
+
+      <table class="table w-75">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -66,7 +77,9 @@
         </thead>
         <tbody id="cuerpo"></tbody>
       </table>
-    </div>
+
+  </div>
+
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
@@ -75,14 +88,13 @@
 
 <style>
   body {
-    text-align: center;
-    background: #283593;
-    color: white;
+    
   }
 </style>
 
 <script>
-  let url = "/canciones";
+  const API_BASE = "http://localhost:3000";
+  const url = API_BASE + "/canciones";
   let tbody = document.getElementById("cuerpo");
   let cancion = document.getElementById("cancion");
   let artista = document.getElementById("artista");
