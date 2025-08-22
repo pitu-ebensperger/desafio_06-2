@@ -1,0 +1,51 @@
+**Setup Express**
+1. Inicio Node JS y genero package.json: `npm init -y`
+2. Instalo dependecias: `npm install express`
+3. Creo archivo index.js con este código:
+    ```
+        const express = require('express')
+        const app = express()
+        app.listen(3000, console.log("¡Servidor encendido!"))
+        app.get("/home", (req, res) => {
+        res.send("Hello World Express Js")
+        })
+    ```
+
+**Setup Express with ES6**
+
+1. Inicio Node JS y genero package.json: `npm init -y`
+2. Instalo dependecias: `npm install express` y `npm install nodemon -D`
+3. Configuro *package.json* para ejecutar en dependencia nodemon y habilido módulos ES6:
+    ```
+    {
+        "name": "...",
+        "version": "1.0.0",
+        "description": "...",
+        "main": "index.js",
+        "type": "module" //Habilita ES6
+        "scripts": {
+            "dev": "nodemon index.js",// Corre nodemon
+            "start": "node index.js" // Corre node
+            "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "keywords": [],
+        "author": "",
+        "license": "ISC"
+        }
+    ```
+4. Creo archivo index.js con este código:
+    ```
+        import express from "express";
+        const app = express();
+
+        app.get("/", (req, res) => {
+            res.json ({ message: "Hello World!"});
+        });
+
+        app.listen(5000, () => {
+            console.log("Example app listening port 5000");
+        });
+        ```
+
+5. Levanto servidor con `npm run dev`
+
