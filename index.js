@@ -8,9 +8,9 @@ app.listen(3000, console.log("¡Servidor encendido!")) // levanto servidor y ide
 app.use(cors()) 
 app.use(express.json()) // uso express.json para recibir datos en formato JSON
 
-function getCanciones(req, res) {
+function readCanciones(req, res) {
     try {
-    return JSON.parse(fs.readFileSync('./canciones.json', 'utf8'));
+    return JSON.parse(fs.readFileSync('./repertorio.json', 'utf8'));
   } catch {
     return [];
   }
@@ -18,7 +18,7 @@ function getCanciones(req, res) {
 
 // GET/canciones
 app.get("/canciones", (req, res) => {
-const canciones = getCanciones();
+const canciones = readCanciones();
   res.json(canciones);
 });
 
@@ -32,9 +32,9 @@ app.get("/home", (req, res) => {
 // POST/canciones
 app.post("/canciones", (req, res) => {
 const cancion = req.body
-const canciones = getCanciones()
+const canciones = readCanciones()
 canciones.push(cancion) //agrego cancion al array
-fs.writeFileSync('./canciones.json', JSON.stringify(canciones)) //escribo el archivo
+fs.writeFileSync('./repertorio.json', JSON.stringify(canciones)) //escribo el archivo
 res.send ('Canción agregada con éxito') //envío respuesta al cliente
 });
 
@@ -42,25 +42,25 @@ res.send ('Canción agregada con éxito') //envío respuesta al cliente
 app.put("/canciones/:id", (req, res) => {
 const {id} = req.params
 const cancion = req.body
-const canciones = getCanciones()
+const canciones = readCanciones()
 const index = canciones.findIndex(p => p.id == id)
 if (index === -1) {
     return res.status(404).send('Canción no encontrada')
 }
 canciones[index] = cancion;
-fs.writeFileSync('./canciones.json', JSON.stringify(canciones)) //escribo el archivo
-res.send ('Canción actualizada con éxito') //envío respuesta al cliente
+fs.writeFileSync('./repertorio.json', JSON.stringify(canciones)) //escribo el archivo
+res.send ('Canción actualizada con éxitnode index.jso') //envío respuesta al cliente
 });
 
 //DELETE/canciones/:id
 app.delete("/canciones/:id", (req, res) => {
 const {id} = req.params
-const canciones = getCanciones()
+const canciones = readCanciones()
 const index = canciones.findIndex(p => p.id == id)
 if (index === -1) {
     return res.status(404).send('Canción no encontrada');
   }
 canciones.splice(index, 1) 
-fs.writeFileSync('./canciones.json', JSON.stringify(canciones)) //escribo el archivo
+fs.writeFileSync('./repertorio.json', JSON.stringify(canciones)) //escribo el archivo
 res.send ('Canción eliminada con éxito') //envío respuesta al cliente
 });
