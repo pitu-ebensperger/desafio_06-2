@@ -2,6 +2,8 @@ const express = require('express') // importo express
 const app = express() // ejecuto express para ob
 const fs = require ('fs') // importo filesystem
 const cors = require('cors') // importo cors
+const path = require('path');
+
 
 app.listen(3000, console.log("¡Servidor encendido!")) // levanto servidor y identifico puerto
 
