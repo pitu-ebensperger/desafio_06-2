@@ -244,6 +244,21 @@ h2 {
             
         }
 
+        .btn-danger,  .btn-warning{
+          padding: .2rem 0;
+        width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .btn-danger{
+            background-color: #ff2e46;
+            color: white;
+        }
+
+        .btn-warning{
+            background-color: white;
+        }
+
 #ListaCanciones{
     width: 100%;
     height: 100%;
@@ -277,10 +292,11 @@ table{
         background-color: #3E1FBB;
     }
 
-    .table thead th, td {
+    .table thead th, .table thead td, td, .table thead th {
         padding: 10px;
         text-align: center;
-        border: none;
+        border-top: none;
+        border-bottom: none;
         color: white;
     }
 
@@ -288,9 +304,12 @@ table{
         width: 100%;
         display: inline-table;
         table-layout: fixed;
-
     }
 
+    .table tbody tr, .table tbody td{
+      border-top: 1px solid #592ffe8a;
+      border-bottom: none;
+    }
   
 </style>
 
@@ -319,7 +338,7 @@ table{
           <td>${c.artista}</td>
           <td>${c.tono}</td>
           <td>
-            <button class="btn btn-warning" onclick="prepararCancion(${i},'${c.id
+            <button class="btn btn-warning mb-2" onclick="prepararCancion(${i},'${c.id
           }')">Editar</button>
             <button class="btn btn-danger" onclick="eliminarCancion(${i},'${c.id
           }')">Eliminar</button>
