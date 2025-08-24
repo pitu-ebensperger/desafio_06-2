@@ -10,13 +10,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
-  
+     
 </head>
 
 <body>
@@ -30,28 +26,26 @@
         <div class="form-group row">
           <label for="name" class="col-sm-3 col-form-label">Canción:</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="cancion" value="A dios le pido" />
+            <input type="text" class="form-control" id="cancion" placeholder="A dios le pido" />
           </div>
         </div>
         <div class="form-group row">
           <label for="email" class="col-sm-3 col-form-label">Artista: </label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="artista" value="Juanes" />
+            <input type="text" class="form-control" id="artista" placeholder="Juanes" />
           </div>
         </div>
         <div class="form-group row">
           <label for="rut" class="col-sm-3 col-form-label">Tono:</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="tono" value="Em" />
+            <input type="text" class="form-control" id="tono" placeholder="Em" />
           </div>
         </div>
         <div class="cont-buttons">
         <button onclick="nuevaCancion()" id="agregar" class="btn btn-add m-auto">
           Agregar
         </button>
-        <button onclick="editarCancion()" id="editar" class="btn btn-edit m-auto">
-          Editar
-        </button>
+        <button onclick="editarCancion()" id="editar" class="btn btn-edit m-auto" style="display:none">Editar</button>
         </div>
       </div>
     </div>
@@ -180,19 +174,23 @@ h2 {
     font-size: 16px;
     width: 100%;
     } 
-  
+          .form-control {
+            color: #ffffff;
+            background-color: transparent;
+            border: 1px solid #8265f4;
+            border-radius: 7px;
+         }
+         .form-control:focus {
+            background-color: #ffffffdb;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 0.5rem 0.3rem rgb(197 189 251 / 57%);
+         }
+
         .form input{
             text-align: center;
             align-items: center;
             }
-        ::placeholder {
-            color: var(--color-accent2);
-            opacity: 1; 
-            }
-            
-        ::-ms-input-placeholder {
-            color: var(--color-accent2);
-            }
+       
             
         .form-row{
             display: flex;
@@ -221,6 +219,7 @@ h2 {
             border:none;
             padding: .5rem auto;
             width: 100%;
+            max-width: 150px;
             font-weight: 600;
             transition: all 0.8s ease;
             }
@@ -231,7 +230,7 @@ h2 {
         }
 
         .btn-add:hover{
-            
+            background-color: #8c88ff;  
         }
 
         .btn-edit{

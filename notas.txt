@@ -49,3 +49,41 @@
 
 5. Levanto servidor con `npm run dev`
 
+------------
+
+**Operador spread ...**
+'...objeto' copia todas las propiedades de un objeto dentro de otro.
+
+**Códigos HTTP**
+- res.status(404) = no encontrado / not found
+- res.status(400) = validacion / not valid
+- res.status(200) = OK
+- res.status(201) = creado.
+
+
+**id**
+
+const index = canciones.findIndex(p => p.id == idNum)
+
+
+**findIndex** 
+Método de arrays en JavaScript que busca el índice (posición) del primer elemento que cumpla con una condición dada (callback). Si no encuentra ningún elemento que cumpla la condición, devuelve -1.
+
+La función flecha p => p.id == idNum
+*p es cada objeto dentro del array mientras se itera.
+
+
+
+
+Según el tipo de dato o el formato que necesites, puedes nombrar la variable así:
+
+xNum → Number(x) → la propiedad x convertida a Number (parseInt, Number()).
+xString → String(x) o x.toString() → la propiedad x convertida a String (String(valor), .toString()).
+xBool → Boolean(x) o !!x → la propiedad x convertida a Boolean (Boolean(valor) o !!valor).
+xDate → new Date(x) → la propiedad x convertida a Date (new Date(valor)).
+xObj → JSON.parse(x) → la propiedad x tratada como objeto (ej: JSON.parse(valor)).
+xArr → x.split(",") → la propiedad x tratada como array (Array.isArray(valor) o split).
+xJSON → JSON.stringify(x) → la propiedad x guardada en formato JSON (JSON.stringify).
+xRaw → valor crudo tal como viene (sin convertir).
+xNormalized → x.trim().toLowerCase() → valor procesado para ser consistente (ej: todo minúsculas, sin espacios).
+xFormatted → x.toLocaleString("es-CL") → valor formateado para mostrar en UI (ej: teléfono con guiones).
