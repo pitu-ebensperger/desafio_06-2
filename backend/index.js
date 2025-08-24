@@ -29,7 +29,6 @@ app.get("/home", (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-
 // GET/canciones
 app.get("/canciones", (req, res) => {
 const canciones = readCanciones();
