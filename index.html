@@ -12,70 +12,8 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-     
-</head>
 
-<body>
-
-<div class="main" style="background-image: url(https://images.unsplash.com/photo-1755563622568-da93252540db); background-size: cover; background-position: center; background-repeat: no-repeat;">
-  <div id="AgregarCancion">
-    <h1 class="pt-3">Mi Repertorio</h1>
-
-    <div class="container">
-      <div>
-        <div class="form-group row">
-          <label for="name" class="col-sm-3 col-form-label">Canción:</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="cancion" placeholder="A dios le pido" />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="email" class="col-sm-3 col-form-label">Artista: </label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="artista" placeholder="Juanes" />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="rut" class="col-sm-3 col-form-label">Tono:</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="tono" placeholder="Em" />
-          </div>
-        </div>
-        <div class="cont-buttons">
-        <button onclick="nuevaCancion()" id="agregar" class="btn btn-add m-auto">
-          Agregar
-        </button>
-        <button onclick="editarCancion()" id="editar" class="btn btn-edit m-auto" style="display:none">Editar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="ListaCanciones">
-
-    <h2>Tabla de Canciones</h2>
-
-      <table class="table w-75">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Canción</th>
-            <th scope="col">Artista</th>
-            <th scope="col">Tono</th>
-            <th scope="col">-</th>
-          </tr>
-        </thead>
-        <tbody id="cuerpo"></tbody>
-      </table>
-
-  </div>
-
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</body>
-
-</html>
-
-<style>
+  <style>
   :root {
     --font-display: 'Unbounded', Helvetica, sans-serif;
     --font-text: 'Instrument Sans', Helvetica, sans-serif;
@@ -162,18 +100,7 @@ h2 {
     border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-  .form{
-    border-top: var(--color-accent3) 1.2px solid;
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 5px;
-    padding: 30px 10%;
-    font-size: 16px;
-    width: 100%;
-    } 
+
           .form-control {
             color: #ffffff;
             background-color: transparent;
@@ -187,7 +114,6 @@ h2 {
          }
 
         .form input{
-            text-align: center;
             align-items: center;
             }
        
@@ -217,7 +143,7 @@ h2 {
         .btn{
             border-radius: 50px;
             border:none;
-            padding: .5rem auto;
+            padding: .5rem 1rem;
             width: 100%;
             max-width: 150px;
             font-weight: 600;
@@ -309,10 +235,85 @@ table{
       border-top: 1px solid #592ffe8a;
       border-bottom: none;
     }
-  
-</style>
 
-<script>
+      #alert {                       
+      position: fixed;     
+      top: 16px;          
+      right: 16px;             
+      z-index: 2000;            
+      min-width: 280px;        
+      margin: 0;                  
+      pointer-events: auto;    
+    }
+      .d-none {
+        display: none !important;
+      }
+      
+</style>
+</head>
+
+<body>
+
+<div class="main" style="background-image: url(https://images.unsplash.com/photo-1755563622568-da93252540db); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div id="AgregarCancion">
+    <h1 class="pt-3">Mi Repertorio</h1>
+
+    <div id="alert" class="alert d-none" role="alert"></div>
+
+    <div class="container">
+      <div>
+      <form class="form" id="form" onsubmit="return false">
+        <div class="form-group row">
+          <label for="cancion" class="col-sm-3 col-form-label">Canción:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="cancion" placeholder="A dios le pido" required /> 
+              <div class="invalid-feedback">Ingresa una canción.</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="artista" class="col-sm-3 col-form-label">Artista: </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="artista" placeholder="Juanes" required />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="tono" class="col-sm-3 col-form-label">Tono:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="tono" placeholder="Em" required/>
+          </div>
+        </div>
+        <div class="cont-buttons">
+        <button type="button" onclick="nuevaCancion()" id="agregar" class="btn btn-add m-auto">
+          Agregar
+        </button>
+        <button type="button" onclick="editarCancion()" id="editar" class="btn btn-edit m-auto" style="display:none">Editar</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div id="ListaCanciones">
+
+    <h2>Tabla de Canciones</h2>
+
+      <table class="table w-75">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Canción</th>
+            <th scope="col">Artista</th>
+            <th scope="col">Tono</th>
+            <th scope="col">-</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+      </table>
+
+  </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
   const API_BASE = "http://localhost:3000";
   const url = API_BASE + "/canciones";
   
@@ -321,40 +322,57 @@ table{
   let artista = document.getElementById("artista");
   let tono = document.getElementById("tono");
 
+  const alertBox = document.getElementById("alert");
+  const form = document.getElementById('form'); 
+
   let canciones = [];
   window.onload = getData();
 
+  function showAlert(type = 'danger', msg = 'Ocurrió un error') { 
+    if (!alertBox) return;
+    alertBox.className = `alert alert-${type}`;
+    alertBox.textContent = msg;
+  }
+  function hideAlert() { 
+    if (!alertBox) return;
+    alertBox.className = 'alert d-none';
+    alertBox.textContent = '';
+  }
+
+
   async function getData() {
-    await axios.get(url).then((data) => {
-      canciones = data.data;
-      tbody.innerHTML = "";
-      console.log(canciones)
-      canciones.forEach((c, i) => {
-        tbody.innerHTML += `
-        <tr>
-          <td>${i + 1}</td>
-          <td>${c.titulo}</td>
-          <td>${c.artista}</td>
-          <td>${c.tono}</td>
-          <td>
-            <button class="btn btn-warning mb-2" onclick="prepararCancion(${i},'${c.id
-          }')">Editar</button>
-            <button class="btn btn-danger" onclick="eliminarCancion(${i},'${c.id
-          }')">Eliminar</button>
-          </td>
-        </tr>
-      `;
-      });
-    });
-    cancion.value = "";
-    artista.value = "";
-    tono.value = "";
+     try {
+      const { data } = await axios.get(url);
+          canciones = Array.isArray(data) ? data : [];
+          tbody.innerHTML = "";
+          console.log(canciones)
+          canciones.forEach((c, i) => {
+            tbody.innerHTML += `
+            <tr>
+              <td>${i + 1}</td>
+              <td>${c.titulo}</td>
+              <td>${c.artista}</td>
+              <td>${c.tono}</td>
+              <td>
+                <button class="btn btn-warning mb-2" onclick="prepararCancion(${i},'${c.id
+              }')">Editar</button>
+                <button class="btn btn-danger" onclick="eliminarCancion(${i},'${c.id
+              }')">Eliminar</button>
+              </td>
+            </tr>
+          `;
+          });
+        cancion.value = "";
+        artista.value = "";
+        tono.value = "";
+    } catch (err) {
+      console.error('GET /canciones falló:', err); 
+      showAlert('danger', 'Error al cargar las canciones');
+    }
   }
 
   function nuevaCancion() {
-    cancion;
-    artista;
-    tono;
+    if (!form.checkValidity()) { form.reportValidity(); return; } 
     const id = Math.floor(Math.random() * 9999)
     let data = {
       id,
@@ -363,14 +381,22 @@ table{
       tono: tono.value,
     };
     console.log(data);
-    axios.post(url, data).then(() => getData());
-  }
+    axios.post(url, data).then(() => {
+      getData();
+      showAlert('success', 'Canción agregada con éxito');
+      setTimeout(hideAlert, 3000);
+    }).catch(() => showAlert('danger', 'Error al agregar la canción'));
+      }
+  
 
   function eliminarCancion(i, id) {
-    axios.delete(url + "/" + id).then(() => {
-      alert("Canción " + canciones[i].titulo + " eliminada");
-      getData();
-    });
+    const titulo = canciones[i]?.titulo || '';
+    axios.delete(url + "/" + id)
+       .then(() => {
+        showAlert('success', `Canción '${titulo}' eliminada`); 
+        getData();                                        
+      })
+      .catch(() => showAlert('danger', 'Error al eliminar la canción')); 
   }
 
   function prepararCancion(i, id) {
@@ -385,6 +411,7 @@ table{
   }
 
   function editarCancion(id) {
+  if (!form.checkValidity()) { form.reportValidity(); return; } 
     axios
       .put(url + "/" + id, {
         id,
@@ -396,6 +423,17 @@ table{
         getData();
         document.getElementById("agregar").style.display = "block";
         document.getElementById("editar").style.display = "none";
+        showAlert('success', 'Canción editada con éxito');
+        setTimeout(hideAlert, 3000);
+      })
+      .catch(() => {
+        showAlert('danger', 'Error al editar la canción');
       });
   }
 </script>
+</body>
+
+</html>
+
+
+
